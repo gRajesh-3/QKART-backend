@@ -3,7 +3,12 @@ const cors = require('cors');
 const config = require('./config.json');
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 app.use(express.json());
 
 const authRouter = require('./routes/auth')
